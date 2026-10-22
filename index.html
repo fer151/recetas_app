@@ -1,13 +1,180 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>recetas_app</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<!DOCTYPE html>
+<!-- DOCUMENTO: Aplicación web de recetas "Cocina Fácil" -->
+<html lang="es">
+
+<head>
+  <!-- CABECERA: Configuración básica de la página -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cocina Fácil</title>
+  <!-- Enlace a la hoja de estilos CSS -->
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+  <!-- CONTENEDOR GENERAL: Barra lateral + Contenido principal -->
+  <div class="aplicacion">
+
+    <!-- SECCIÓN: BARRA LATERAL (MENÚ DE NAVEGACIÓN) -->
+    <aside class="barra-lateral" id="barraLateral">
+
+      <!-- Botón de menú hamburguesa -->
+      <button class="boton-hamburguesa" id="botonHamburguesa" aria-label="Abrir o cerrar menú">
+        ☰
+      </button>
+
+      <!-- Menú vertical de navegación -->
+      <nav class="menu-vertical">
+        <button class="opcion-menu activo" data-seccion="inicio">
+          <span class="icono-menu">
+            <img src="imagenes/inicio.jpg" alt="Inicio" style="width: 24px; height: 24px; object-fit: contain;">
+          </span>
+          <span class="texto-menu">INICIO</span>
+        </button>
+
+        <button class="opcion-menu" data-seccion="ingredientes">
+          <span class="icono-menu">
+            <img src="imagenes/ingredientes.jpg" alt="Mis Ingredientes" style="width: 24px; height: 24px; object-fit: contain;">
+          </span>
+          <span class="texto-menu">MIS INGREDIENTES</span>
+        </button>
+
+        <button class="opcion-menu" data-seccion="top">
+          <span class="icono-menu">⭐</span>
+          <span class="texto-menu">MIS TOP RECETAS</span>
+        </button>
+
+        <button class="opcion-menu" data-seccion="compras">
+          <span class="icono-menu">🛒</span>
+          <span class="texto-menu">LISTA DE COMPRAS</span>
+        </button>
+      </nav>
+    </aside>
+
+    <!-- SECCIÓN: CONTENIDO PRINCIPAL -->
+    <main class="contenido">
+
+      <!-- VISTA 1: INICIO (Categorías de recetas) -->
+      <section id="inicio" class="vista visible">
+
+        <!-- Título principal centrado -->
+        <h1 class="titulo-principal">COCINA FÁCIL</h1>
+
+        <!-- Barra de búsqueda -->
+        <div class="barra-busqueda">
+          <input type="text" placeholder="Busca tus recetas favoritas">
+          <button class="boton-dorado">🔍 Buscar</button>
+        </div>
+
+        <!-- Cuadrícula de tarjetas de categorías -->
+        <div class="cuadricula-categorias">
+
+          <!-- Tarjeta 1: Postres -->
+          <article class="tarjeta-categoria">
+            <img src="imagenes/postres.webp" alt="Postres" class="imagen-categoria">
+            <h2>POSTRES</h2>
+          </article>
+
+          <!-- Tarjeta 2: Bebidas -->
+          <article class="tarjeta-categoria">
+            <img src="imagenes/bebidas.webp" alt="Bebidas" class="imagen-categoria">
+            <h2>BEBIDAS</h2>
+          </article>
+
+          <!-- Tarjeta 3: Comida -->
+          <article class="tarjeta-categoria">
+            <img src="imagenes/comida.webp" alt="Comida" class="imagen-categoria">
+            <h2>COMIDA</h2>
+          </article>
+
+          <!-- Tarjeta 4: Cena -->
+          <article class="tarjeta-categoria">
+            <img src="imagenes/cenas.jpg" alt="Cena" class="imagen-categoria">
+            <h2>CENA</h2>
+          </article>
+
+          <!-- Tarjeta 5: Almuerzo -->
+          <article class="tarjeta-categoria">
+            <img src="imagenes/almuerzo.jpg" alt="Almuerzo" class="imagen-categoria">
+            <h2>ALMUERZO</h2>
+          </article>
+
+          <!-- Tarjeta 6: Snack -->
+          <article class="tarjeta-categoria">
+            <img src="imagenes/snack.jpg" alt="Snack" class="imagen-categoria">
+            <h2>SNACK</h2>
+          </article>
+
+          <!-- Tarjeta 7: Sorpréndeme (Ocupa 2 columnas) -->
+          <article class="tarjeta-categoria tarjeta-ancha">
+            <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600" alt="Sorpréndeme" class="imagen-categoria">
+            <h2>SORPRÉNDEME</h2>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- VISTA 2: MIS INGREDIENTES -->
+      <section id="ingredientes" class="vista">
+        <h1 class="titulo-vista">Mis ingredientes</h1>
+        <p class="subtitulo">Agrega lo que tienes en tu cocina.</p>
+
+        <div class="caja">
+          <div class="fila-formulario">
+            <input type="text" class="campo-texto" placeholder="Escribe un ingrediente (ej. huevo)">
+            <button class="boton-dorado">Agregar</button>
+          </div>
+
+          <div class="grupo-etiquetas">
+            <span class="chip">🥚 Huevo</span>
+            <span class="chip">🍅 Tomate</span>
+            <span class="chip">🧀 Queso</span>
+            <span class="chip">🥛 Leche</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- VISTA 3: MIS TOP RECETAS -->
+      <section id="top" class="vista">
+        <h1 class="titulo-vista">Mis top recetas</h1>
+        <p class="subtitulo">Tus recetas favoritas en un solo lugar.</p>
+
+        <div class="caja">
+          <ul class="lista">
+            <li><span>🍝 Espagueti a la boloñesa</span> <span class="estrellas">★★★★★</span></li>
+            <li><span>🌮 Tacos de pollo</span> <span class="estrellas">★★★★★</span></li>
+            <li><span>🥞 Hotcakes esponjosos</span> <span class="estrellas">★★★★☆</span></li>
+            <li><span>🍰 Pastel de limón</span> <span class="estrellas">★★★★☆</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- VISTA 4: LISTA DE COMPRAS -->
+      <section id="compras" class="vista">
+        <h1 class="titulo-vista">Lista de compras</h1>
+        <p class="subtitulo">Todo lo que necesitas para tus recetas.</p>
+
+        <div class="caja">
+          <ul class="lista">
+            <li><label><input type="checkbox"> Tomates (4 piezas)</label></li>
+            <li><label><input type="checkbox"> Pasta espagueti (500 g)</label></li>
+            <li><label><input type="checkbox"> Carne molida (300 g)</label></li>
+            <li><label><input type="checkbox"> Tortillas (1 paquete)</label></li>
+          </ul>
+
+          <div class="botones-accion">
+            <button class="boton-dorado">🖨 Imprimir lista</button>
+            <button class="boton-celeste">🛵 Pedir a domicilio</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- SCRIPT: Navegación del menú y lógica básica -->
+  <script src="jsbasico.js"></script>
+</body>
+
 </html>
