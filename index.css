@@ -330,33 +330,42 @@ input[type="checkbox"] {
   }
 }
 
+/* SECCIÓN CON FONDO (VISTA DE INGREDIENTES) */
 .seccion-con-fondo {
-  /* 1. Ruta de la imagen (puede ser local o una URL web) */
-  background-image: url('imagenes/Fondo.webp');
-
-  /* 2. Evita que la imagen se repita en mosaico */
+  /* Añadimos un degradado oscuro semitransparente encima de la imagen para que el texto blanco se lea perfectamente */
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.5), 
+      rgba(0, 0, 0, 0.5)
+    ), 
+    url('imagenes/Fondo.webp');
+  
   background-repeat: no-repeat;
-
-  /* 3. Centra la imagen dentro de la sección */
   background-position: center;
-
-  /* 4. Hace que la imagen cubra todo el ancho y alto del contenedor sin deformarse */
   background-size: cover;
+  
+  /* IMPORTANTE: Evita que ocupe de más y bloquee los clics del menú lateral */
+  position: relative;
+  z-index: 1;
 
-  /* 5. (Opcional) Fija la imagen mientras haces scroll (efecto Parallax básico) */
-  background-attachment: fixed;
-
-  /* 6. Espaciado interno (Padding) para que el contenido no quede pegado a los bordes */
-  padding: 100px 20px;
-
-  /* 7. Color de respaldo por si la imagen tarda en cargar */
-  background-color: #333333;
+  /* Asegura que cubra toda la altura disponible de la pantalla principal */
+  min-height: 100vh;
+  padding: 40px;
+  box-sizing: border-box;
 }
 
-/* Estilos opcionales para mejorar la legibilidad del texto */
-.seccion-con-fondo .contenido {
-  color: #ffffff; /* Texto blanco para resaltar sobre fondos oscuros */
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
+/* Estilos específicos para que los textos y la caja resalten sobre el fondo con imagen */
+.seccion-con-fondo .titulo-vista {
+  color: var(--blanco);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.seccion-con-fondo .subtitulo {
+  color: #f0f0f0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* Hacemos la caja blanca ligeramente traslúcida para que luzca moderna y moderna sobre el fondo */
+.seccion-con-fondo .caja {
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
