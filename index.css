@@ -329,3 +329,34 @@ input[type="checkbox"] {
     display: none;
   }
 }
+
+.seccion-con-fondo {
+  /* 1. Ruta de la imagen (puede ser local o una URL web) */
+  background-image: url('imagenes/Fondo.webp');
+
+  /* 2. Evita que la imagen se repita en mosaico */
+  background-repeat: no-repeat;
+
+  /* 3. Centra la imagen dentro de la sección */
+  background-position: center;
+
+  /* 4. Hace que la imagen cubra todo el ancho y alto del contenedor sin deformarse */
+  background-size: cover;
+
+  /* 5. (Opcional) Fija la imagen mientras haces scroll (efecto Parallax básico) */
+  background-attachment: fixed;
+
+  /* 6. Espaciado interno (Padding) para que el contenido no quede pegado a los bordes */
+  padding: 100px 20px;
+
+  /* 7. Color de respaldo por si la imagen tarda en cargar */
+  background-color: #333333;
+}
+
+/* Estilos opcionales para mejorar la legibilidad del texto */
+.seccion-con-fondo .contenido {
+  color: #ffffff; /* Texto blanco para resaltar sobre fondos oscuros */
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
