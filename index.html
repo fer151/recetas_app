@@ -3,16 +3,18 @@
 <html lang="es">
 
 <head>
-  <!-- CABECERA: Configuración básica de la página -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cocina Fácil</title>
-  <!-- Enlace a la hoja de estilos CSS -->
-  <link rel="stylesheet" href="index.css">
+  <!-- Hoja de estilos (está en public/, por eso la ruta empieza con /) -->
+  <link rel="stylesheet" href="/index.css">
 </head>
 
 <body>
+  <!-- React dibuja toda la aplicación dentro de este contenedor -->
+  <div id="root"></div>
 
+<<<<<<< HEAD
   <!-- CONTENEDOR GENERAL: Barra lateral + Contenido principal -->
   <div class="aplicacion">
 
@@ -175,6 +177,10 @@
 
   <!-- SCRIPT: Navegación del menú y lógica básica -->
   <script src="jsbasico.js"></script>
+=======
+  <!-- Archivo de entrada de React -->
+  <script type="module" src="/src/main.jsx"></script>
+>>>>>>> 8b82a70c54d8cd6b35698dbda31dbb2463efda8c
 </body>
 
 </html>
