@@ -574,3 +574,214 @@ input[type="checkbox"] {
     transition: none !important;
   }
 }
+
+/* =========================================================
+   ALACENA DIGITAL (pantalla Mis ingredientes)
+   ========================================================= */
+
+@keyframes caer {
+  0%   { opacity: 0; transform: translateY(-70px) scale(0.6); }
+  60%  { opacity: 1; transform: translateY(6px) scale(1.05); }
+  80%  { transform: translateY(-3px) scale(0.98); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes desaparecer {
+  to { opacity: 0; transform: translateY(-40px) scale(0.3) rotate(15deg); }
+}
+
+@keyframes sacudir {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+.seccion-con-fondo .caja {
+  margin-bottom: 26px;
+}
+
+/* Sugerencias rápidas */
+.sugerencias {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.sugerencias-titulo {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--texto-suave);
+  margin-right: 4px;
+}
+
+.chip-boton {
+  cursor: pointer;
+  font-family: inherit;
+  color: var(--texto);
+}
+
+/* Mueble de la alacena */
+.alacena {
+  max-width: 760px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #e2b878, #c28a4a 50%, #d9a566);
+  border: 6px solid #a9743a;
+  border-radius: 18px 18px 8px 8px;
+  padding: 14px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45), inset 0 2px 0 rgba(255, 255, 255, 0.35);
+}
+
+.alacena-letrero {
+  width: fit-content;
+  margin: -34px auto 14px;
+  background: linear-gradient(135deg, var(--dorado-claro), var(--dorado));
+  color: var(--blanco);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 2px;
+  padding: 7px 22px;
+  border-radius: 8px;
+  border: 2px solid var(--dorado-oscuro);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+/* Interior oscuro, como el fondo de un mueble */
+.alacena-interior {
+  position: relative;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.35), transparent 12%, transparent 88%, rgba(0, 0, 0, 0.35)),
+    linear-gradient(180deg, #6f4a26, #8a5e33);
+  border-radius: 8px;
+  padding: 10px 14px 0;
+  box-shadow: inset 0 10px 24px rgba(0, 0, 0, 0.55);
+}
+
+.alacena-vacia {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  color: #f3dfc0;
+  font-weight: 700;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Cada repisa: objetos arriba + tabla de madera abajo */
+.estante {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 130px;
+}
+
+.estante-objetos {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 8px;
+  min-height: 108px;
+  padding: 0 6px;
+}
+
+.estante-tabla {
+  height: 16px;
+  margin: 0 -14px;
+  background: linear-gradient(180deg, #e8c48a, #b98445);
+  border-bottom: 4px solid #7d5428;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Cada ingrediente sobre la repisa */
+.ingrediente-estante {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 88px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0 0 4px;
+  animation: caer 0.6s ease both;
+  transition: transform 0.2s ease;
+}
+
+.ingrediente-estante:hover {
+  transform: translateY(-8px);
+}
+
+.ingrediente-dibujo {
+  font-size: 54px;
+  line-height: 1;
+  filter: drop-shadow(0 6px 4px rgba(0, 0, 0, 0.45));
+}
+
+.ingrediente-nombre {
+  margin-top: 4px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 800;
+  color: #4a3320;
+  background-color: #fdf3d0;
+  border: 1px solid var(--dorado);
+  border-radius: 4px;
+  padding: 1px 8px;
+}
+
+/* La ✕ aparece solo al pasar el mouse */
+.ingrediente-quitar {
+  position: absolute;
+  top: -6px;
+  right: 6px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: #d9534f;
+  color: var(--blanco);
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.ingrediente-estante:hover .ingrediente-quitar {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.ingrediente-estante.saliendo {
+  animation: desaparecer 0.35s ease forwards;
+  pointer-events: none;
+}
+
+.ingrediente-estante.repetido {
+  animation: sacudir 0.5s ease;
+}
+
+@media (max-width: 800px) {
+  .seccion-con-fondo {
+    padding: 22px 14px;
+  }
+
+  .ingrediente-estante {
+    width: 70px;
+  }
+
+  .ingrediente-dibujo {
+    font-size: 42px;
+  }
+}

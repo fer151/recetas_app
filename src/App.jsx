@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 import Inicio from "./pages/Inicio";
+import Ingredientes from "./pages/Ingredientes";
 
 // Pantallas que se construyen en los siguientes pasos
 function Pendiente({ titulo }) {
@@ -66,7 +67,7 @@ export default function App() {
         <main className="contenido">
           <Routes>
             <Route path="/" element={<Inicio />} />
-            <Route path="/ingredientes" element={<Pendiente titulo="Mis ingredientes" />} />
+            <Route path="/ingredientes" element={<Ingredientes />} />
             <Route path="/top" element={<Pendiente titulo="Mis top recetas" />} />
             <Route path="/compras" element={<Pendiente titulo="Lista de compras" />} />
           </Routes>
